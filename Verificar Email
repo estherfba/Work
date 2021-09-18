@@ -1,0 +1,25 @@
+def email():
+
+    local = str(input("Digite o local do email: "))
+    pLetra = str(local[:1])
+    
+    if len(local) > 64 or pLetra == "0" or pLetra == "1" or pLetra == "2" or pLetra == "3" or pLetra == "4" or pLetra == "5" or pLetra == "6" or pLetra == "7" or pLetra == "8" or pLetra == "9" or pLetra == "." or pLetra == "-" or pLetra == "_":
+        print("Local inválido")
+        return False
+        
+    dominio = str(input("Digite o dominio do email: "))
+
+    if len(dominio) > 255:
+        print("Dominio inválido")
+        return False
+            
+    else:
+        email = local+"@"+dominio
+        verificacao = len(email)
+
+        if verificacao > 256 or verificacao == 0:
+            print("O Email ",email," é inválido")
+            return False
+        elif verificacao < 256:
+            print("O Email ",email," é válido")
+            return True
