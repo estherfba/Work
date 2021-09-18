@@ -1,0 +1,40 @@
+def cnpj():
+    
+    cnpj = str(input("Digite seu CNPJ: "))
+    
+    if len(cnpj) != 14:
+        return False
+    
+    n1 = int(cnpj[:1])
+    n2 = int(cnpj[1:2])
+    n3 = int(cnpj[2:3])
+    n4 = int(cnpj[3:4])
+    n5 = int(cnpj[4:5])
+    n6 = int(cnpj[5:6])
+    n7 = int(cnpj[6:7])
+    n8 = int(cnpj[7:8])
+    n9 = int(cnpj[8:9])
+    n10 = int(cnpj[9:10])
+    n11 = int(cnpj[10:11])
+    n12 = int(cnpj[11:12])
+    n13 = int(cnpj[12:13])
+    n14 = int(cnpj[13:14])
+
+    sobra1 = (((n1*5)+(n2*4)+(n3*3)+(n4*2)+(n5*9)+(n6*8)+(n7*7)+(n8*6)+(n9*5)+(n10*4)+(n11*3)+(n12*2))%11)
+
+    if sobra1 < 2:
+        sobra1 = 0
+    elif sobra1 > 2:
+        sobra1 = 11 - sobra1
+
+    sobra2 = (((n1*6)+(n2*5)+(n3*4)+(n4*3)+(n5*2)+(n6*9)+(n7*8)+(n8*7)+(n9*6)+(n10*5)+(n11*4)+(n12*3)+(n13*2))%11)
+
+    if sobra2 < 2:
+        sobra2 = 0
+    elif sobra2 > 2:
+        sobra2 = 11 - sobra2
+
+    if sobra1 == n13 and sobra2 == n14:
+        print("CNPJ válido")
+    else:
+        print("CNPJ inválido")
