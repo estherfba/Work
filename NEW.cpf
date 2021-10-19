@@ -1,0 +1,38 @@
+def cpf():
+    
+    cpf = str(input("Digite seu CPF: "))
+    
+    if len(cpf) != 11:
+            return False
+    
+    cpfNumbers = []
+
+    cpfNumbers.append(int(cpf[:1]))
+    cpfNumbers.append(int(cpf[1:2]))
+    cpfNumbers.append(int(cpf[2:3]))
+    cpfNumbers.append(int(cpf[3:4]))
+    cpfNumbers.append(int(cpf[4:5]))
+    cpfNumbers.append(int(cpf[5:6]))
+    cpfNumbers.append(int(cpf[6:7]))
+    cpfNumbers.append(int(cpf[7:8]))
+    cpfNumbers.append(int(cpf[8:9]))
+    cpfNumbers.append(int(cpf[9:10]))
+    cpfNumbers.append(int(cpf[10:11]))
+
+
+    sobra1 = ((((cpfNumbers[0]*10)+(cpfNumbers[1]*9)+(cpfNumbers[2]*8)+(cpfNumbers[3]*7)+(cpfNumbers[4]*6)+(cpfNumbers[5]*5)+(cpfNumbers[6]*4)+(cpfNumbers[7]*3)+(cpfNumbers[8]*2))*10)%11)
+
+    if sobra1 == 10:
+        sobra1 = 0
+
+    sobra2 = ((((cpfNumbers[0]*11)+(cpfNumbers[1]*10)+(cpfNumbers[2]*9)+(cpfNumbers[3]*8)+(cpfNumbers[4]*7)+(cpfNumbers[5]*6)+(cpfNumbers[6]*5)+(cpfNumbers[7]*4)+(cpfNumbers[8]*3)+(cpfNumbers[9]*2))*10)%11)
+
+    if sobra2 == 10:
+        sobra2 = 0
+
+    if sobra1 == cpfNumbers[9] and sobra2 == cpfNumbers[10]:
+        print("CPF válido")
+    else:
+        print("CPF inválido")
+
+cpf()
