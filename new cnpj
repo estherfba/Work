@@ -1,0 +1,45 @@
+def cnpj():
+    
+    cnpj = str(input("Digite seu CNPJ: "))
+    
+    if len(cnpj) != 14:
+        return False
+    
+    cnpjNumbers = [ ]
+   
+
+    cnpjNumbers.append(int(cnpj[:1]))
+    cnpjNumbers.append(int(cnpj[1:2]))
+    cnpjNumbers.append(int(cnpj[2:3]))
+    cnpjNumbers.append(int(cnpj[3:4]))
+    cnpjNumbers.append(int(cnpj[4:5]))
+    cnpjNumbers.append(int(cnpj[5:6]))
+    cnpjNumbers.append(int(cnpj[6:7]))
+    cnpjNumbers.append(int(cnpj[7:8]))
+    cnpjNumbers.append(int(cnpj[8:9]))
+    cnpjNumbers.append(int(cnpj[9:10]))
+    cnpjNumbers.append(int(cnpj[10:11]))
+    cnpjNumbers.append(int(cnpj[11:12]))
+    cnpjNumbers.append(int(cnpj[12:13]))
+    cnpjNumbers.append(int(cnpj[13:14]))
+   
+    sobra1 = (((cnpjNumbers[0] *5)+(cnpjNumbers[1]*4)+(cnpjNumbers[2]*3)+(cnpjNumbers[3]*2)+(cnpjNumbers[4]*9)+(cnpjNumbers[5]*8)+(cnpjNumbers[6]*7)+(cnpjNumbers[7]*6)+(cnpjNumbers[8]*5)+(cnpjNumbers[9]*4)+(cnpjNumbers[10]*3)+(cnpjNumbers[11]*2))%11)
+
+    if sobra1 < 2:
+        sobra1 = 0
+    elif sobra1 > 2:
+        sobra1 = 11 - sobra1
+
+    sobra2 = (((cnpjNumbers[0]*6)+(cnpjNumbers[1]*5)+(cnpjNumbers[2]*4)+(cnpjNumbers[3]*3)+(cnpjNumbers[4]*2)+(cnpjNumbers[5]*9)+(cnpjNumbers[6]*8)+(cnpjNumbers[7]*7)+(cnpjNumbers[8]*6)+(cnpjNumbers[9]*5)+(cnpjNumbers[10]*4)+(cnpjNumbers[11]*3)+(cnpjNumbers[12]*2))%11)
+
+    if sobra2 < 2:
+        sobra2 = 0
+    elif sobra2 > 2:
+        sobra2 = 11 - sobra2
+
+    if sobra1 == cnpjNumbers[12] and sobra2 == cnpjNumbers[13]:
+        print("CNPJ válido")
+    else:
+        print("CNPJ inválido")
+
+cnpj()
