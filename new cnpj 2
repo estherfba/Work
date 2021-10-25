@@ -1,0 +1,59 @@
+def digitoVerificador(textNumbers):
+    total = 0
+    index = len(textNumbers) - 1
+    factor = 9
+    while index >= 0:
+        total = total + textNumbers[index] * factor
+        index = index - 1
+        factor = factor - 1
+        if factor == 1: 
+            factor = 9 
+    total = total%11
+    if total < 2:  
+        total = 0
+    elif total > 2:
+        total = 11 - total
+    return total
+
+def cnpj():
+    
+    cnpj = str(input("Digite seu CNPJ: "))
+    firstTenCnpj = cnpj[0:9]
+    firstElevenCnpj = cnpj[0:9]
+
+    if len(cnpj) != 14:
+        return False
+    
+    cnpjNumbers = [ ]
+   
+    cnpjNumbers.append(int(cnpj[:1]))
+    cnpjNumbers.append(int(cnpj[1:2]))
+    cnpjNumbers.append(int(cnpj[2:3]))
+    cnpjNumbers.append(int(cnpj[3:4]))
+    cnpjNumbers.append(int(cnpj[4:5]))
+    cnpjNumbers.append(int(cnpj[5:6]))
+    cnpjNumbers.append(int(cnpj[6:7]))
+    cnpjNumbers.append(int(cnpj[7:8]))
+    cnpjNumbers.append(int(cnpj[8:9]))
+    cnpjNumbers.append(int(cnpj[9:10]))
+    cnpjNumbers.append(int(cnpj[10:11]))
+    cnpjNumbers.append(int(cnpj[11:12]))
+    
+    print(cnpjNumbers)
+    sobra1 = digitoVerificador(cnpjNumbers)
+    cnpjNumbers.append(int(cnpj[12:13]))
+    
+    print(cnpjNumbers) 
+    sobra2 = digitoVerificador(cnpjNumbers)
+    print(sobra2) 
+    
+    cnpjNumbers.append(int(cnpj[13:14]))
+    if sobra1 == cnpjNumbers[12] and sobra2 == cnpjNumbers[13]:
+        return True
+    else:
+        return False 
+
+if cnpj():
+    print("CNPJ válido")
+else:
+    print("CNPJ inválido")
