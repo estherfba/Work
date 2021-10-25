@@ -1,0 +1,118 @@
+def validarEmail(email):
+    cont = 1
+    for i in email:
+        cont = cont + 1
+        if i == "@":
+            Local = str(email[0:cont-2])
+            Dominio = str(email[cont-1:len(email)])
+            break
+
+    #validar o tamanho
+    if validarEmailLegth(Local, Dominio) == False:
+        return False
+
+    #validar o local
+    if validarLocal(Local) == False:
+        return False
+        
+    #validar o dominio
+    if validarDominio(Dominio) == False:
+        return False
+
+def validarEmailLegth(Local, Dominio):
+    if len(Local) > 64:
+        print("Email inválido")
+        return False
+    elif len(Dominio) > 255:
+        print("Email inválido")
+        return False
+    return True
+
+def validarLocal(Local):
+    pLetra = str(Local[:1])
+    
+    cont = 0
+    for i in Local:
+        cont = cont + 1
+
+        if cont == len(Local):
+            uLetra = str(i)
+
+    listaCaracteres = ['0', '1', '2','3',
+    '4', '5', '6', '7', '8', '9']
+
+    listaCaracteresEspeciais = ['.', '-', '_']
+
+    for i in range(10):
+        if pLetra == listaCaracteres[i]:
+            print("Email inválido")
+            return False
+        elif uLetra == listaCaracteres[i]:
+            print("Email inválido")
+            return False
+    
+    for i in range(len(Local) -1):
+        Letra = str(Local[i:i+1])
+        sLetra = str(Local[i+1:i+2])
+        
+        for j in range(3):
+            if Letra == sLetra and Letra == listaCaracteresEspeciais[j] and sLetra == listaCaracteresEspeciais[j]:
+                print("Email inválido")
+                return False
+    return True
+    
+        
+def validarDominio(Dominio):
+
+    listaCaracteres = ['.', '-', '_', '!', '#', '$', '%', '&','*', '(', ')',
+      '+', '/', ',', ';', ':', '?', '=', '°', 'º', '[', ']', '{', '}', 'ª',
+      '§', '¬', '¢', '£', '³','²', '¹', '|', '"', '<', '>', '0', '1', '2',
+      '3', '4', '5', '6', '7', '8', '9']
+    
+    listaCaracteresN = ['.', '-', '_', '!', '#', '$', '%', '&','*', '(', ')',
+      '+', '/', ',', ';', ':', '?', '=', '°', 'º', '[', ']', '{', '}', 'ª',
+      '§', '¬', '¢', '£', '³','²', '¹', '|', '"', '<', '>']
+
+    if len(Dominio) > 255:
+        print("Email inválido")
+        return False
+
+    x = 0
+    
+    for i in Dominio:
+
+        if i == ".":
+            etiqueta1 = str(Dominio.split('.')[0])
+            x = 1
+        elif x == 1:
+            etiqueta2 = str(Dominio.split('.')[1])
+    
+    for i in range (36):
+        if etiqueta1[:1] == listaCaracteresN[i] or etiqueta2[:1] == listaCaracteresN[i]:
+            print("Email inválido")
+            return False
+
+    if len(etiqueta1) > 63 or len(etiqueta2) > 63:
+        print("Email inválido")
+        return False
+    
+    pDominio = str(Dominio[:1])
+    cont = 0
+    for i in Dominio:
+        cont = cont + 1
+
+        if cont == len(Dominio):
+            uDominio = str(i)
+
+    for i in range(len(listaCaracteres)):
+        if pDominio == listaCaracteres[i]:
+            print("Email inválido")
+            return False
+
+        elif uDominio == listaCaracteres[i]:
+            print("Email inválido")
+            return False
+
+
+    
+    return True
