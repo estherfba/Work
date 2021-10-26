@@ -1,0 +1,46 @@
+def Calculo(fixo):
+    desfecho = 0 
+    extensao = len(fixo)
+    final = extensao - 6
+    
+for i in range(0, extensao):
+    final -= 1 
+    
+    if(final == 1):
+        final = 9
+
+    desfecho += final * fixo[i]
+    
+desfecho = desfecho % 11
+
+if desfecho < 2:
+    return 0 
+    return 11 - desfecho 
+
+
+def DigitoVerificador(cpf, final, range);
+    desfecho = 0
+    total = 0
+    
+for z in cpf[0:range]
+  total = z * final 
+  desfecho += total
+  final = final - 1 
+ 
+ desfecho = (desfecho * 10)%11
+ 
+if desfecho == 10:
+    desfecho = 0 
+if desfecho == cpf[range]:
+    return True
+else:
+    return False
+
+def cpf():
+    
+cpfNumbers = str(input("Digite seu CPF: "));
+firstTenCpf = cpf[0:10]
+firstElevenCpf = cpf[0:11]
+    
+    if len(cpf) != 11:
+            return False;
