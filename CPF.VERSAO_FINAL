@@ -1,0 +1,60 @@
+def digitoVerificador(textNumbers):
+    print(textNumbers)
+    total = 0
+    index = len(textNumbers) - 1
+    factor = 9
+    while index >= 0:
+        total = total + textNumbers[index] * factor
+        index = index - 1
+        factor = factor - 1
+        if factor == 1: 
+            factor = 9
+    total = total%11
+    if total < 2:  
+        total = 0
+    elif total > 2:
+        total = 11 - total
+    print("returning: " + str(total))
+    return total
+
+def cpf():
+    
+    cpf = str(input("Digite seu CPF: "));
+    
+    if len(cpf) != 11:
+            return False;
+    
+    cpfNumbers = []
+
+    cpfNumbers.append(int(cpf[:1]))
+    cpfNumbers.append(int(cpf[1:2]))
+    cpfNumbers.append(int(cpf[2:3]))
+    cpfNumbers.append(int(cpf[3:4]))
+    cpfNumbers.append(int(cpf[4:5]))
+    cpfNumbers.append(int(cpf[5:6]))
+    cpfNumbers.append(int(cpf[6:7]))
+    cpfNumbers.append(int(cpf[7:8]))
+    cpfNumbers.append(int(cpf[8:9]))
+    cpfNumbers.append(int(cpf[9:10]))
+    cpfNumbers.append(int(cpf[10:11]))
+       
+    sobra1 = digitoVerificador(cpfNumbers)
+    cpfNumbers.append(int(cpf[9:10]))
+    
+    
+    sobra2 = digitoVerificador(cpfNumbers)
+    
+    
+    cpfNumbers.append(int(cpf[10:11]))
+    print("Primeiro digito: " + str(cpfNumbers[9]) )
+
+    print("Segundo digito: " + str(cpfNumbers[10]) )
+    if sobra1 == cpfNumbers[9] and sobra2 == cpfNumbers[10]:
+        return True
+    else:
+        return False
+        
+if cpf():
+    print("CPF inválido.");
+else:
+    print("CPF válido.");
