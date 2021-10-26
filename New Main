@@ -1,0 +1,25 @@
+import Email
+import Cnpj
+import Cpf
+
+contador = 0
+
+while(contador < 9999):
+    
+    opcao = str(input("[1] - Validar E-mail\n[2] - Validar CPF\n[3] - Validar CNPJ\n[4] - Sair\n"))
+    
+    if opcao == "1":
+        email = input("Digite o email: ")
+        Email.validarEmail(email)
+        
+    elif opcao == "2":
+        Cpf.cpf()
+        
+    elif opcao == "3":
+        Cnpj.cnpj()
+        
+    elif opcao == "4":
+        contador = 9999
+        
+    else:
+        print("Opção inválida")
