@@ -114,5 +114,5 @@ def validarDominio(Dominio):
             return False
 
 
-    
+    print("Email válido")
     return True
